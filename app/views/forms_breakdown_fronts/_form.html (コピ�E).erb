@@ -1,0 +1,47 @@
+<%#= form_for @forms_breakdown_front, :url => { :action => 'create' } do |f| %>
+<%= form_for(@forms_breakdown_front) do |f| %>
+
+  <% if @forms_breakdown_front.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+          <%= pluralize(@forms_breakdown_front.errors.count, "error") %>
+           prohibited this breakdown from being saved:
+      </h2>
+
+      <ul>
+      <% @forms_breakdown_front.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_kind %><br />
+    <%= f.text_field :payment_kind %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_card %><br />
+    <%= f.text_field :credit_card %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>date:</b>
+  <%= @forms_breakdown_front.date %>
+</p>
+
+<p>
+  <b>name:</b>
+  <%= @forms_breakdown_front.name %>
+</p>
+
+<p>
+  <b>price:</b>
+  <%= @forms_breakdown_front.price %>
+</p>
+
+<p>
+  <b>payment_kind:</b>
+  <%= @forms_breakdown_front.payment_kind %>
+</p>
+
+<p>
+  <b>credit_card:</b>
+  <%= @forms_breakdown_front.credit_card %>
+</p>
+
+
+<br />
+<%= link_to 'Edit', edit_forms_breakdown_front_path(@forms_breakdown_front.id) %> |
+<%= link_to 'Back', forms_breakdown_fronts_path %>

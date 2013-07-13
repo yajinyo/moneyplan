@@ -1,0 +1,42 @@
+<h1>New breakdown</h1>
+
+
+
+
+
+
+  <% if @forms_breakdown_front.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+          <%= pluralize(@forms_breakdown_front.errors.count, "error") %>
+           prohibited this breakdown from being saved:
+      </h2>
+
+      <ul>
+      <% @forms_breakdown_front.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<%= form_for @forms_breakdown_front, :url => { :action => 'create' } do |f| %>
+
+  <%= render 'form', {:f => f } %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+<%= link_to 'Back', forms_breakdown_fronts_path %>

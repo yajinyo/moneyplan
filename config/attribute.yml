@@ -1,0 +1,16 @@
+attributes:
+  samples2:
+    - name
+    - kind
+  breakdowns:
+    - id
+    - date
+    - name
+    - price
+    - payment_kind
+    - credit_card
+  samples:
+    - date
+    - price2
+    - date
+

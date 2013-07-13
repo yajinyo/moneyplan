@@ -1,0 +1,28 @@
+<h1>Listing breakdowns</h1>
+
+<table>
+  <tr>
+    <th>date</th>
+    <th>name</th>
+    <th>price</th>
+    <th>payment_kind</th>
+    <th>credit_card</th>
+  </tr>
+
+<% @forms_breakdown_fronts.each do |forms_breakdown_front| %>
+  <tr>
+    <td><%= forms_breakdown_front.date %></td>
+    <td><%= forms_breakdown_front.name %></td>
+    <td><%= forms_breakdown_front.price %></td>
+    <td><%= forms_breakdown_front.payment_kind %></td>
+    <td><%= forms_breakdown_front.credit_card %></td>
+    <td><%= link_to 'Show', forms_breakdown_front_path(forms_breakdown_front.id) %></td>
+    <td><%= link_to 'Edit', edit_forms_breakdown_front_path(forms_breakdown_front.id) %></td>
+    <td><%= link_to 'Destroy', forms_breakdown_front_path(forms_breakdown_front.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Breakdown', new_forms_breakdown_front_path %>
