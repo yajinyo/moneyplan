@@ -1,10 +1,20 @@
 Moneyplan::Application.routes.draw do
-  resources :samples
 
-
-###############  resources :breakdowns
   resources :forms_breakdown_fronts
 
+  resources :debugs, :only => [] do
+    collection do
+     get :view_item
+   end
+  end
+
+=begin
+  resources :prescription_sets, :only => [] do
+    resources :rps, :only => [] do
+      get :set_edit, :controller => "prescription_sets", :action=>"set_edit"
+    end
+  end
+=end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
