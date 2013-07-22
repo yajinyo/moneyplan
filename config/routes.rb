@@ -1,6 +1,8 @@
 Moneyplan::Application.routes.draw do
 
-  resources :forms_breakdown_fronts
+
+  # :as => ルート名の別名, :path => URL書換え
+  resources :forms_breakdown_fronts, :as => "daily", :path => "daily"
 
   resources :debugs, :only => [] do
     collection do
