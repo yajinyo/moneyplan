@@ -36,6 +36,6 @@ Moneyplan::Application.configure do
   config.assets.debug = true
 
 
-  BetterErrors::Middleware.allow_ip! "10.10.52.56"
+  BetterErrors::Middleware.allow_ip! "10.10.50.52"
 
 end
