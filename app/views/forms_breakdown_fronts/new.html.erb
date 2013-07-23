@@ -1,8 +1,18 @@
-<h1>New breakdown</h1>
+<!--<h1>New breakdown</h1>-->
 
 
 
-
+  <style>
+    .sunday .ui-state-default {
+      color: red;
+      }
+    .saturday .ui-state-default {
+      color: blue;
+      }
+    .holiday .ui-state-default {
+      color: red;
+      }
+  </style>
 
 
   <% if @forms_breakdown_front.errors.any? %>
@@ -33,8 +43,7 @@
 
 
 
-
-
+ <input type="text" id="datepicker" />
 
 
 

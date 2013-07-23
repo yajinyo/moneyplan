@@ -2,7 +2,7 @@ Moneyplan::Application.routes.draw do
 
 
   # :as => ルート名の別名, :path => URL書換え
-  resources :forms_breakdown_fronts, :path => "dailies"
+  resources :forms_breakdown_fronts, :path => "details"
 
   resources :debugs, :only => [] do
     collection do
