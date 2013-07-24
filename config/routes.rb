@@ -1,6 +1,9 @@
 Moneyplan::Application.routes.draw do
 
 
+  resources :holidays
+
+
   # :as => ルート名の別名, :path => URL書換え
   resources :forms_breakdown_fronts, :path => "details"
 

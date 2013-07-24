@@ -2,33 +2,21 @@
 
 
 
-  <style>
-    .sunday .ui-state-default {
-      color: red;
-      }
-    .saturday .ui-state-default {
-      color: blue;
-      }
-    .holiday .ui-state-default {
-      color: red;
-      }
-  </style>
 
+<% if @forms_breakdown_front.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+        <%= pluralize(@forms_breakdown_front.errors.count, "error") %>
+         prohibited this breakdown from being saved:
+    </h2>
 
-  <% if @forms_breakdown_front.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-          <%= pluralize(@forms_breakdown_front.errors.count, "error") %>
-           prohibited this breakdown from being saved:
-      </h2>
-
-      <ul>
-      <% @forms_breakdown_front.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+    <% @forms_breakdown_front.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 
 <%= form_for @forms_breakdown_front, :url => { :action => 'create' } do |f| %>
@@ -39,12 +27,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-
-
-
- <input type="text" id="datepicker" />
-
 
 
 
