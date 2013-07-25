@@ -2,8 +2,10 @@
 // すべてに有効
 //
 
+/*
+ * URL編集
+ */
 var SystemHelper = {};
-
 SystemHelper.UrlFor = function(url) {
   if(typeof(url) == "string") {
     return "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>" + url;
@@ -11,3 +13,30 @@ SystemHelper.UrlFor = function(url) {
     return "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>/" + url.controller + "/" + url.action + "/";
   }
 }
+
+/*
+ * 本日日付取得
+ */
+function today(){
+  myD       = new Date();
+  myYear    = myD.getFullYear();
+  myMonth   = myD.getMonth() + 1;
+  myDate    = myD.getDate();
+
+  return myYear + "-" + myMonth + "-" + myDate;
+}
+
+/*
+ * load時の処理
+ */
+$(function() {
+
+  $(".datepicker").each(
+    function(){
+      if ($(this).val() == "") {
+        $(this).val(today);   // todayクラスに本日日付を表示
+      }
+    }
+  );
+
+});

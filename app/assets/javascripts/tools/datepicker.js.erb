@@ -3,9 +3,8 @@
 //
 
 $(function() {
-alert("!!!");
   // 祝日を祝日マスタから取得
-  var holidays = [];  // [ '2013-07-08', '2013-08-03', '2012-08-24' ];
+  var holidays = [];  // [ ['2013-01-01', "元日"], ['2013-07-15', "海の日"], ['2013-05-05', "こどもの日"] ];
 
   var request = {};
   request.url = SystemHelper.UrlFor("/holidays.json/");
@@ -14,7 +13,10 @@ alert("!!!");
 
   request.success = function(response) {
     for(var i=0; i<response.length; i++){
-      holidays[i] = response[i].ymd;
+      var holiday = [];
+      holiday[0] = response[i].ymd;
+      holiday[1] = response[i].name;
+      holidays[i] = holiday;
     }
   };
 
@@ -24,7 +26,7 @@ alert("!!!");
 
   $.ajax(request);
 
-
+  // カレンダー表示
   $(".datepicker").datepicker({
 
     dateFormat: "yy-mm-dd",
@@ -37,7 +39,7 @@ alert("!!!");
     beforeShowDay: function(date) {
       // 祝日の判定
       for (var i = 0; i < holidays.length; i++) {
-        var htime = Date.parse(holidays[i]);    // 祝日を 'YYYY-MM-DD' から time へ変換
+        var htime = Date.parse(holidays[i][0]);    // 祝日を 'YYYY-MM-DD' から time へ変換
         var holiday = new Date();
         holiday.setTime(htime);                 // 上記 time を Date へ設定
 
@@ -45,7 +47,7 @@ alert("!!!");
         if (holiday.getYear() == date.getYear() &&
             holiday.getMonth() == date.getMonth() &&
             holiday.getDate() == date.getDate()) {
-            return [true, 'holiday'];
+            return [true, 'holiday', holidays[i][1]];
         }
       }
       // 日曜日
