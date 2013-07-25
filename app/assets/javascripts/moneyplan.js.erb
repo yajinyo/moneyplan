@@ -1,80 +1,13 @@
-$(function() {
+// moneyplan全般スクリプト
+// すべてに有効
+//
 
-  // 祝日を配列で確保
-  // var holidays = [ '2013-07-08', '2013-08-03', '2012-08-24' ];
-  var holidays = [];
+var SystemHelper = {};
 
-  var url = SystemHelper.UrlFor("/holidays/list/");
-  $.get(url, {},
-    function(data){
-
-      holidays
-
-
-
-
-
-
-
-      $("#rp_editor_area").find('tbody').append( data );
-      $("#table_editor").css("display", "block");
-
-      // 追加後のrp数取得
-      var after_rp = $('#table_editor').find("td[name='rp_no']").size();
-
-      rp_cnt = after_rp;
-      btn_enabled();
-    }
-  );
-
-
-
-
-
-
-
-  $(".datepicker").datepicker({
-
-    dateFormat: "yy-mm-dd",
-    showOn: "button",
-    buttonImage: "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>/assets/calendar.gif",
-    // buttonImage: "<%= image_path('calendar.gif') %>",
-    // buttonImage: "/assets/css/img/fancybox/fancy_nav_right.png",
-    buttonImageOnly: true,
-
-    beforeShowDay: function(date) {
-      // 祝日の判定
-      for (var i = 0; i < holidays.length; i++) {
-        var htime = Date.parse(holidays[i]);    // 祝日を 'YYYY-MM-DD' から time へ変換
-        var holiday = new Date();
-        holiday.setTime(htime);                 // 上記 time を Date へ設定
-
-        // 祝日
-        if (holiday.getYear() == date.getYear() &&
-            holiday.getMonth() == date.getMonth() &&
-            holiday.getDate() == date.getDate()) {
-            return [true, 'holiday'];
-        }
-      }
-      // 日曜日
-      if (date.getDay() == 0) {
-          return [true, 'sunday'];
-      }
-      // 土曜日
-      if (date.getDay() == 6) {
-          return [true, 'saturday'];
-      }
-      // 平日
-      return [true, ''];
-    },
-
-    onSelect: function(dateText, inst) {
-        $("#date_val").val(dateText);
-    }
-  });
-
-
-
-
-
-});
+SystemHelper.UrlFor = function(url) {
+  if(typeof(url) == "string") {
+    return "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>" + url;
+  } else {
+    return "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>/" + url.controller + "/" + url.action + "/";
+  }
+}

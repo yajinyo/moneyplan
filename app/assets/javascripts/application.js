@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.ui.datepicker-ja
-//= require_tree .
+//= require_directory .
 
