@@ -5,4 +5,8 @@ class DebugsController < ApplicationController
     @breakdown = Breakdown.first
 	end
 
+  def abcdefg
+  end
+
 end
+
